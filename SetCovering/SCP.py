@@ -26,6 +26,7 @@ Datasets taken from: http://people.brunel.ac.uk/~mastjjb/jeb/orlib/scpinfo.html
 #import packages
 import math
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import copy
 
@@ -189,10 +190,9 @@ def mip_OR_Tools(data,time_limit:"Solver Time Limit (s)" = 1800,verbose:"Long Ou
     if status == pywraplp.Solver.FEASIBLE or status == pywraplp.Solver.OPTIMAL:
         print("Status: ",dict_status[status])
         print('Objective value =', solver.Objective().Value())
-        print()
-        print('Problem solved in %f milliseconds' % solver.wall_time())
-        print('Problem solved in %d iterations' % solver.iterations())
-        print('Problem solved in %d branch-and-bound nodes' % solver.nodes())
+        verboseprint('Problem solved in %f milliseconds' % solver.wall_time())
+        verboseprint('Problem solved in %d iterations' % solver.iterations())
+        verboseprint('Problem solved in %d branch-and-bound nodes' % solver.nodes())
         print()
     #In case it is not feasible or optimal
     else:
@@ -212,6 +212,8 @@ def mip_OR_Tools(data,time_limit:"Solver Time Limit (s)" = 1800,verbose:"Long Ou
         out = None
         print("Something went wrong! Model didn't exit with a valid solution.")
         print()
+    
+    verboseprint(f"Variables Values: {out}")
     
     return objValue, out
 
@@ -390,11 +392,11 @@ if __name__ == '__main__':
     data = get_data()
     # data = read_data("scpnre1.txt")
     print("SCP MIP pyomo: ")
-    print(mip_pyomo(data,verbose=True))
+    print(mip_pyomo(data,verbose=False))
     print("="*150)
     print()
     print("SCP MIP OR tools: ")
-    print(mip_OR_Tools(data,verbose=True))
+    print(mip_OR_Tools(data,verbose=False))
     print("="*150)
     print()
     print("LR Method: ")
