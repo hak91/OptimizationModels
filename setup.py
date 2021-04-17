@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="or_models",
-    version="0.1.1",
+    version="0.1.1.1",
     url="https://github.com/hak91/OptimizationModels",
     author="Hussain Kharodawala",
     author_email="hussain.abbas52@gmail.com",
@@ -15,9 +15,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     keywords = ['set cover', 'Operations Research','Mathematical Optimization', 'heuristic', 'greedy', 'Lagrangian Relaxation'],
     install_requires=[
-        'numpy',
-        'time',
-        'ortools'
+        'numpy>=1.19.2',
+        'ortools>=8.2.8710'
     ],
     classifiers=[
         'Programming Language :: Python :: 3.6',
