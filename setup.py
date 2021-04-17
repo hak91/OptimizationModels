@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="or_models",
-    version="0.1.0",
+    version="0.1.1",
     url="https://github.com/hak91/OptimizationModels",
     author="Hussain Kharodawala",
     author_email="hussain.abbas52@gmail.com",
